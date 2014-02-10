@@ -22,13 +22,11 @@
                     $scope.openedRoutineDeadline = true;
                 };
 
-                $scope.openCompletionDeadline = function ($event) {
+                $scope.openCompletionDeadline = function () {
 
                     //if ($scope.model.routineDeadline)
                     //    $scope.completionMinDate = $scope.model.routineDeadline;
                     $timeout(function () {
-                        $event.preventDefault();
-                        $event.stopPropagation();
                         $scope.openedCompletionDeadline = true;
                     });
                 };
