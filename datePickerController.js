@@ -4,40 +4,45 @@
 //    module.controller("DatePickerController",
 //        [
 //            "$scope", "$timeout",
-            function DatePickerController ($scope, $timeout) {
-                $scope.today = function () {
-                    $scope.dt = new Date();
-                };
-                // Disable weekend selection
-                $scope.disabled = function (date, mode) {
-                    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 7));
-                };
+var DatepickerDemoCtrl = function ($scope) {
+    $scope.today = function () {
+        $scope.dt = new Date();
+    };
+    $scope.today();
 
-                $scope.routineMinDate = Date.today();
-                //$scope.routineMaxDate = $scope.model.deadline || new Date($scope.routineMinDate).addYears(2);
-                $scope.routineMaxDate = new Date($scope.routineMinDate).addYears(2);
+    $scope.showWeeks = true;
+    $scope.toggleWeeks = function () {
+        $scope.showWeeks = !$scope.showWeeks;
+    };
 
-                $scope.completionMinDate = Date.today();
-                $scope.completionMaxDate = new Date($scope.completionMinDate).addYears(2);
+    $scope.clear = function () {
+        $scope.dt = null;
+    };
 
-                $scope.openRoutineDeadline = function () {
-                    $scope.openedRoutineDeadline = true;
-                };
+    // Disable weekend selection
+    $scope.disabled = function (date, mode) {
+        return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+    };
 
-                $scope.openCompletionDeadline = function () {
+    $scope.toggleMin = function () {
+        $scope.minDate = ($scope.minDate) ? null : new Date();
+    };
+    $scope.toggleMin();
 
-                    //if ($scope.model.routineDeadline)
-                    //    $scope.completionMinDate = $scope.model.routineDeadline;
-                    //$timeout(function () {
-                        $scope.openedCompletionDeadline = true;
-                    //});
-                };
+    $scope.open = function ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
 
-                $scope.dateOptions = {
-                    'year-format': "'yy'",
-                    'starting-day': 1
-                };
+        $scope.opened = true;
+    };
 
-            }
+    $scope.dateOptions = {
+        'year-format': "'yy'",
+        'starting-day': 1
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'shortDate'];
+    $scope.format = $scope.formats[0];
+};
 //            ]);
 //}(angular.module("app")));
