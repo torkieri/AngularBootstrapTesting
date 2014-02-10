@@ -5,7 +5,9 @@
         <title>MyTestApplication</title>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <link href="Content/site.css" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+        <script src="datePickerController.js"></script>
+        @*<script src="titleController.js"></script>*@
     </head>
     <body>
         <br/>
@@ -28,16 +30,35 @@
             <div>
                 <div class ="row">
                     <div class="col-md-3"><input ng-model="yourName" placeholder="Enter your name" type="text" /></div>
+                    <h3>Hello {{yourName}}</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-8">
-                    <h3>Hello {{yourName}}</h3>
                 </div>
             
                 <div class="col-lg-3 col-md-3 col-sm-4">
                     <p class="lead">Data-binding is an automatic way of updating the view whenever <strong>model</strong> changes, as well as updating the model whenever the view changes.</p>
-                        This is awesome because it eliminates DOM manipulation from the list of things you have to
-                        Data-binding is an automatic way of updating the view whenever the model changes, as well as updating the model whenever the view changes. This is awesome because it eliminates DOM manipulation from the list of things you have to
-                        Data-binding is an automatic way of updating the view whenever the model changes, as well as updating the model whenever the view changes. This is awesome because it eliminates DOM manipulation from the list of things you have to
+                    This is awesome because it eliminates DOM manipulation from the list of things you have to
+                    Data-binding is an automatic way of updating the view whenever the model changes, as well as updating the model whenever the view changes. This is awesome because it eliminates DOM manipulation from the list of things you have to
+                    Data-binding is an automatic way of updating the view whenever the model changes, as well as updating the model whenever the view changes. This is awesome because it eliminates DOM manipulation from the list of things you have to
+                </div>
+            </div>
+            
+            <div ng-controller="DatePickerController">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="input-group">
+                            <input type="text" class="form-control" ng-model="model.deadline" name="deadline" 
+                                   datepicker-popup="dd.MM.yyyy" is-open="openedCompletionDeadline" min="completionMinDate" max="completionMaxDate" show-button-bar="false" show-weeks="false"
+                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)" />
+
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="openCompletionDeadline($event)">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                    
+                    </div>
                 </div>
             </div>
         </div>
