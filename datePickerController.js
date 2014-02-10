@@ -4,6 +4,9 @@
 //    module.controller("DatePickerController",
 //        [
 //            "$scope", "$timeout",
+
+var myAppModule = angular.module('myApp', ['ui.bootstrap']);
+
 var DatepickerDemoCtrl = function ($scope) {
     $scope.today = function () {
         $scope.dt = new Date();
