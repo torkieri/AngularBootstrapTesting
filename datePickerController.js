@@ -28,9 +28,9 @@
 
                     //if ($scope.model.routineDeadline)
                     //    $scope.completionMinDate = $scope.model.routineDeadline;
-                    $timeout(function () {
+                    //$timeout(function () {
                         $scope.openedCompletionDeadline = true;
-                    });
+                    //});
                 };
 
                 $scope.dateOptions = {
